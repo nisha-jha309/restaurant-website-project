@@ -43,7 +43,19 @@
 .navoptions a:hover {
     color: orangered;
 }
+#contact {
+    padding: var(--btn-padding);
+    border: none;
+    color: var(--btn-textcolor);
+    background-color: var(--btn-color);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 18px;
+}
 
+#contact:hover {
+    color: black;
+}
 .banner-section {
     position: relative;
 }
@@ -65,21 +77,6 @@
     color: white;
     z-index: 3;
 }
-
-#contact {
-    padding: var(--btn-padding);
-    border: none;
-    color: var(--btn-textcolor);
-    background-color: var(--btn-color);
-    border-radius: var(--radius);
-    cursor: pointer;
-    font-size: 18px;
-}
-
-#contact:hover {
-    color: black;
-}
-
 .hero-section-banner {
     position: relative;
 }
