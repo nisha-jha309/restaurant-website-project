@@ -84,71 +84,24 @@
 .banner-overlay {
     position: absolute;
     width: 100%;
-    height:99.7%;
+    height:100%;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.3);
 }
-#know-about-us-more{
-    color:yellow;
-    text-decoration: none;
-    font-size:16px;
-    text-align: center;
-}
-#about {
-    background-color: rgb(173, 53, 10);
-    background-image: url();
-    width: 100%;
-    display: flex;
-    gap: 20px;
-}
-
-.about-text {
-    width: 60%;
-    color: white;
-    padding: 200px 40px;
-}
-
-.booknow-form-section {
-    background-color: rgba(203, 129, 92, 0.6);
-    width: 40%;
-    color: white;
-    height: 100%;
-    padding: 50px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-#booknow {
-    padding: var(--btn-padding);
-    color: white;
-    display: block;
-    border-radius: var(--radius);
-    background-color: rgb(234, 127, 56);
-    border: none;
-    text-transform: uppercase;
-    font-family: sans-serif;
-    justify-content: center;
-}
-
-.form-group {
+.about-section{
+    padding: 100px 10%;
     display: grid;
-    grid-template-columns: 190px 200px;
-    gap: 10px;
-    align-items: flex-start;
-    margin-bottom: 30px;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgba(157, 153, 153, 0.656);
 }
-
-#booknow:hover {
-    background-color: #D35400;
+.about-section-img img{
+    height: 500px;
+    border-radius:16px;
 }
-
-#book-now input {
-    background-color: whitesmoke;
-    border-radius: var(--radius);
-    border: none;
-    padding: 8px 12px;
+.Menu-section{
+    background-color: rgba(247, 234, 209, 0.656);
 }
-
 #menu {
     width: 100%;
     display: flex;
@@ -182,7 +135,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     line-height: 1.2;
-    --webkit-line-clamp: 3;
+    -webkit-line-clamp: 3;
     text-overflow: ellipsis;
     overflow: hidden;
     margin: 10px;
@@ -205,7 +158,6 @@
 }
 
 .Menu-section h2 {
-    font-style: italic;
     font-weight: 400;
     text-transform: capitalize;
     margin: 20px 0;
