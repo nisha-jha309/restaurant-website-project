@@ -90,7 +90,7 @@
     background-color: rgba(0, 0, 0, 0.3);
 }
 .about-section{
-    padding: 100px 10%;
+    padding: 50px 10%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: rgba(157, 153, 153, 0.656);
@@ -99,8 +99,43 @@
     height: 500px;
     border-radius:16px;
 }
+.about-section-text p:nth-of-type(1){
+    font-size: 32px;
+    color:orangered;
+}
+.about-section-text p:nth-of-type(2){
+    font-size: 60px;
+    color: black;
+}
+.about-section-text p:nth-of-type(3){
+    font-size:28px;
+    color: black;
+}
+.about-section-text ul li{
+    list-style-type: none;
+}
+
 .Menu-section{
     background-color: rgba(247, 234, 209, 0.656);
+    padding: 50px 10px;
+}
+.Menu-section h2 {
+    font-weight: 400;
+    text-transform: capitalize;
+    margin: 20px 0 60px 0;
+    font-size: 48px;
+    text-align: center;
+}
+#viewall{
+    font-size:12px;
+    color:whitesmoke;
+    padding: var(--btn-padding);
+    border: none;
+    border-radius: var(--radius);
+    background-color: black;
+    cursor: pointer;
+    margin:50px auto;
+    display: block;
 }
 #menu {
     width: 100%;
@@ -137,6 +172,7 @@
     line-height: 1.2;
     -webkit-line-clamp: 3;
     text-overflow: ellipsis;
+    line-clamp: 3;
     overflow: hidden;
     margin: 10px;
 }
@@ -151,26 +187,6 @@
     margin: 10px auto;
     font-size: 12px;
     cursor: pointer;
-}
-
-.Menu-section {
-    padding: 50px 10px;
-}
-
-.Menu-section h2 {
-    font-weight: 400;
-    text-transform: capitalize;
-    margin: 20px 0;
-    font-size: 48px;
-    text-align: center;
-}
-#viewall{
-    font-size:24px;
-    color:orangered;
-    margin:50px auto;
-    display: block;
-    text-decoration: none;
-    text-align: center;
 }
 .foot{
     background-color: rgb(46, 45, 45);
