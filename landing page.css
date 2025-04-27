@@ -23,7 +23,7 @@
     align-items: center;
     height: 15vh;
     padding: 10px 40px;
-    background-color: black;
+    background-color: black; 
     z-index: 1000;
 }
 
@@ -43,7 +43,7 @@
 .navoptions a:hover {
     color: orangered;
 }
-#contact {
+#Reservations {
     padding: var(--btn-padding);
     border: none;
     color: var(--btn-textcolor);
@@ -140,17 +140,24 @@
     transform: rotate(30deg);
     color: orangered;
 }
-
 .Menu-section{
     background-color: rgba(247, 234, 209, 0.656);
-    padding: 50px 10px;
+    padding: 50px 10%;
+}
+.Menu-section>div:nth-of-type(1){
+    display: flex;
+    gap:10px;
+    align-items: center;
 }
 .Menu-section h2 {
     font-weight: 400;
     text-transform: capitalize;
-    margin: 20px 0 60px 0;
+    margin-bottom:20px;
     font-size: 48px;
     text-align: center;
+}
+.Menu-section p{
+    width: 60%;
 }
 #viewall{
     font-size:12px;
@@ -214,6 +221,152 @@
     font-size: 12px;
     cursor: pointer;
 }
+.testimonials-section{
+    padding:10%;
+}
+.testimonials-section>div:nth-of-type(1){
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+.testimonials-section>h2{
+    font-size:60px;
+    font-weight: 500;
+    color: black;
+    width: 40%;
+    margin-bottom:20px;
+}
+.testimonials-section>p{
+    font-size: 24px;
+    width:60%;
+}
+.testimonials{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:40px;
+    grid-template-rows:0.7fr 0.7fr 0.7fr;
+    margin-top: 80px;
+    overflow:hidden;
+}
+.testimonial{
+    padding:20px;
+    border-radius: 8px;
+    border: 1px solid rgba(222, 219, 219, 0.662);
+    background-color: rgba(222, 219, 219, 0.462);
+    position: relative;
+    animation: slide 0.4s ease 0.1s 1 forwards;
+    visibility: hidden;
+}
+.testimonial{
+    animation-delay: 0.1s;
+}
+.testimonial2{
+animation-delay: 0.3s;
+}
+.testimonial3{
+    animation-delay: 0.5s;
+    }
+.testimonial4{
+        animation-delay: 0.7s;
+        }
+.testimonial5{
+            animation-delay: 0.9s;
+            }
+@keyframes slide {
+    from{
+        visibility: hidden;
+        transform: scale(0.5);
+    }
+    to{
+        visibility: visible;
+        transform:scale(1);
+    }
+}
+.testimonial h2{
+    font-size:24px;
+    margin-bottom: 10px;
+    font-weight: 500;
+} 
+.testimonial p:nth-of-type(1){
+    font-size: 16px;
+    margin-bottom:24px;
+}
+.testimonial p:nth-of-type(2){
+    font-size: 16px;
+    color: red;
+    justify-content: right;
+    gap: 8px;
+    align-items: center;
+    display: flex;
+}
+.newsletter{
+    /* margin:0 10% 50px 10%; */
+    padding: 50px 10%;
+    text-align: center;
+    /* border-radius: 18px; */
+    background-color: rgba(251, 197, 48, 0.403);
+}
+.newsletter h1{
+    font-size:32px;
+    color: orangered;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+.newsletter h2{
+    font-size: 20px;
+    color: rgb(247, 209, 17);
+    text-align: left;
+}
+/* .newsletter ul{
+    padding:0 80px;
+    margin:20px 0;
+    font-size: 18px;
+    list-style-type:url();
+    text-align: left;
+} */
+.newsletter p:nth-of-type(1){
+    margin-bottom: 10px;
+}
+.newsletter p:nth-of-type(2){
+    margin-bottom: 50px;
+}
+.newsletter p:nth-of-type(3){
+    margin-bottom:25px;
+} 
+#free{
+    font-weight: bold;
+}
+.subscribe-email{
+    width: 70%;
+    /* background-color: whitesmoke; */
+    margin: 20px 15%;
+    padding:20px;
+    border-radius: 48px;
+}
+#email-id{
+    border: none;
+    padding:var(--btn-padding);
+    background-color: white;
+    box-shadow: 1px 1px 2px inset grey;
+    flex: 1;
+    width: 70%;
+    border-radius: 18px 0 0 18px;
+}
+#email-id:focus{
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    color: black;
+}
+#subscribe{
+    color: white;
+    background-color: orangered;
+    padding: var(--btn-padding);
+    border: none;
+    width: 30%;
+    border-radius: 0 18px 18px 0;
+}
 .foot{
     background-color: rgb(46, 45, 45);
     padding:10px 0 0 0;
@@ -267,6 +420,9 @@
     text-decoration: none;
     color:white;
     font-size:14px;
+}
+.foot-nav a:hover{
+    color: rgb(194, 193, 193);
 }
 .foot-nav a::after{
     content:" | ";
