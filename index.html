@@ -7,40 +7,39 @@
     <title>Tasty Trills
     </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="landing page.css">
+    <link rel="stylesheet" href="home page.css">
 </head>
 
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="/landing page images/restaurant logo.png" alt="" class="logo">
+            <img src="/home/restaurant logo.png" alt="" class="logo">
         </div>
         <div class="navoptions">
             <a href="#">Home</a>
             <a href="#">Menu</a>
             <a href="#">About</a>
             <a href="#" onclick="location.href='contact.html'">Contact Us</a>
-            <input type="button" value="Reservations" id="Reservations">
+            <input type="button" value="Reservations" id="Reservations" onclick="location.href='reservation.html'">
         </div>
     </nav>
-    <div class="hero-section-banner">
         <div class="banner-section">
-            <div class="banner-img"><img src="/landing page images/restaurant.webp" alt="" class="banner-img">
+            <div class="banner-video-section">
+            <video autoplay muted loop height="560" width="100%" class="banner-video" >
+                <source src="home/cooking.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="banner-overlay"></div>
             </div>
             <div>
-                <div class="banner-text">
-                    <p class="banner-text1">Welcome to Tasty Trills – A Symphony of Flavors!</p>
-                    <p class="banner-text2">Where passion meets the plate, and every meal is a masterpiece. </p>
-                    <p class="banner-text3">Indulge in unforgettable tastes, crafted just for you.</p>
-                    <div id="know-about-us-more"><a href="">Know more abut us</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="banner-overlay"></div>
+                <h2 class="banner-text banner-text1">Welcome to Tasty Trills – <i>A Symphony of Flavors!</i></h2>
+                <p class="banner-text banner-text2">Where passion meets the plate, and every meal is a masterpiece. </p>
+                <p class="banner-text banner-text3">Indulge in unforgettable tastes, crafted just for you.</p>
+        </div>    
     </div>
     <div class="about-section">
         <div class="about-section-img">
-            <img src="/landing page images/Paneer-Tikka.jpg" alt="">
+            <img src="/home/Paneer-Tikka.jpg" alt="">
         </div>
         <div class="about-section-text">
             <div>
@@ -407,7 +406,7 @@
             <div>&copy;&nbsp;<i>2025 Nisha Jha</i></div>
         </div>
     </div>
-    <script src="landing page.js"></script>
+    <script src="home page.js"></script>
 </body>
 
 </html>
