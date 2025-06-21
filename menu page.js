@@ -113,7 +113,57 @@ for (const category in groupedItems) {
             `).join("")}
         </div>
     `;
-
-    // Append to main container
     menuContainer.appendChild(categoryHTML);
+}
+let plus=document.getElementsByClassName("plus");
+    let minus=document.getElementsByClassName("minus");
+    let quantity=document.getElementsByClassName("quant");
+    for (let i = 0; i < plus.length; i++) {
+  plus[i].addEventListener("click", function increaseQuantity() {
+    let current = parseInt(quantity[i].textContent);
+    quantity[i].textContent = current + 1;
+    if(current===9){
+        plus[i].removeEventListener("click",increaseQuantity);
+        plus[i].style.opacity = 0.5;
+      plus[i].style.pointerEvents = "none";
+    }
+  });
+
+  minus[i].addEventListener("click", function lessQuantity() {
+    let current = parseInt(quantity[i].textContent);
+    if (current > 0) {
+      quantity[i].textContent = current - 1;
+    }
+  });
+
+// add to cart functionality
+  let atc=document.getElementsByClassName("atc");
+ for (let i = 0; i < atc.length; i++) {
+  atc[i].addEventListener("click", function () {
+    let qty = parseInt(quantity[i].textContent);
+    if (qty > 0) {
+      
+      // Prepare item data
+      let itemData = {
+        name: itemNames[i].textContent,
+        price: parseInt(prices[i].textContent), // remove 'rs' if included
+        quantity: qty
+      };
+
+      // Get cart from localStorage or create new
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Check if item already exists, then update quantity
+      let existing = cart.find(item => item.name === itemData.name);
+      if (existing) {
+        existing.quantity += itemData.quantity;
+      } else {
+        cart.push(itemData);
+      }
+
+      // Save to localStorage
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  });
+}
 }

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp | Tasty Trills</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #full {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        #image-section {
+            border-radius: 0 6px 0 6px;
+        }
+
+        #image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0 6px 0 6px;
+        }
+
+        #form-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #loginForm {
+            padding: 30px;
+            background-color: white;
+            width: 400px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        #login {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        #loginForm input {
+            width: 100%;
+            border: 1px solid black;
+            padding: 8px 18px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        #loginForm input:focus {
+            outline: none;
+        }
+
+        #loginForm input::placeholder {
+            color: grey;
+        }
+
+        #CreateAccountBtn {
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            background-color: orangered;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 20px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        #CreateAccountBtn:hover {
+            background-color: brown;
+        }
+
+        #forgotPassword {
+            text-align: center;
+            color: black;
+            margin-bottom: 10px;
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        #already {
+            text-align: center;
+            font-weight: 300;
+            font-size: 14px;
+
+        }
+
+        #checkbox-section {
+            display: grid;
+            grid-template-columns: 10% 90%;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        #checkbox-section p {
+            font-size: 10px
+        }
+
+        #checkbox-section input {
+            width: 20px;
+            height: 20px;
+            accent-color: orangered;
+            border-radius: 6px;
+            border: 1px solid orangered;
+        }
+
+        #checkbox-section input:checked {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            #full {
+
+                grid-template-rows: 30% 70%;
+                grid-template-columns: repeat(1, 100%);
+            }
+
+            #image-section {
+                width: 100%;
+                height: 90%;
+            }
+
+            #loginForm {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="full">
+        <div id="image-section"><img src="home/restaurant-interior.jpg" alt=""></div>
+        <div id="form-section">
+            <form action="" id="loginForm">
+                <p id="login">Sign Up</p>
+                <input type="text" name="" id="name" placeholder="Full Name">
+                <input type="email" name="" id="emailId" placeholder="Email ID">
+                <input type="tel" name="" id="phone" placeholder="Phone Number">
+                <input type="password" name="" id="Password" placeholder="Password">
+                 <input type="password" name="" id="ConfirmPassword" placeholder="Confirm Password">
+
+                <div id="checkbox-section">
+                    <input type="checkbox" name="" id="checkbox">
+                    <p>I agree to Zomato's <span>Terms of Service</span>, <span>Privacy Policy</span> and <span>Content
+                            Policies</span></p>
+                </div>
+                <button type="submit" id="CreateAccountBtn">Create Account</button>
+                <p id="already">Already have an account? <a href="login.html">Log In</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+         let name = document.getElementById("name");
+        let Password = document.getElementById("Password");
+        let ConfirmPassword=document.getElementById("ConfirmPassword")
+        let phone = document.getElementById("phone");
+        let emailId = document.getElementById("emailId");
+        let CreateAccountBtn = document.getElementById("CreateAccountBtn");
+        CreateAccountBtn.addEventListener("click", () => {
+            localStorage.setItem("Password", Password.value);
+            localStorage.setItem("ConfirmPassword", ConfirmPassword.value);
+              localStorage.setItem("phone", phone.value);
+            localStorage.setItem("emailId", emailId.value);
+              localStorage.setItem("name", name.value);
+            location.reload();
+            window.addEventListener("load", () => {
+                localStorage.getItem("Password");
+                  localStorage.getItem("ConfirmPassword");
+                    localStorage.getItem("phone");
+                localStorage.getItem("emailId");
+                localStorage.getItem("name")
+            })
+        })
+
+    </script>
+</body>
+
+</html>
