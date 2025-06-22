@@ -57,35 +57,48 @@
 
         #loginForm input {
             width: 100%;
-            border: 1px solid black;
+            border: 1px solid rgba(128, 128, 128, 0.600);
             padding: 8px 18px;
             border-radius: 8px;
             margin-bottom: 20px;
             font-weight: 400;
+            position: relative;
         }
 
         #loginForm input:focus {
             outline: none;
-        }
+            border: 1px solid black;
 
-        #loginForm input::placeholder {
-            color: grey;
+        }
+         #loginForm div:focus-within label{
+            position: absolute;
+            top: -10px;
+            left: 18px;
+            background-color: white;
+            font-size: 12px;
+         }
+         #loginForm div{
+            position: relative;
+         }
+        #loginForm label {
+            color: black;
+            position: absolute;
+             top: 8px;
+            left: 18px;
+            background-color: white;
+            font-size: 14px;
         }
 
         #CreateAccountBtn {
             border: none;
             padding: 10px 20px;
             color: white;
-            background-color: orangered;
+            background-color: grey;
             border-radius: 8px;
             width: 100%;
             margin-bottom: 20px;
             font-weight: 500;
             transition: background-color 0.2s ease;
-        }
-
-        #CreateAccountBtn:hover {
-            background-color: brown;
         }
 
         #forgotPassword {
@@ -115,17 +128,22 @@
             font-size: 10px
         }
 
-        #checkbox-section input {
+        #checkbox-section p>a {
+            text-decoration: none;
+            color: orangered;
+        }
+
+        #checkbox {
             width: 20px;
             height: 20px;
             accent-color: orangered;
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid orangered;
         }
 
-        #checkbox-section input:checked {
+        #checkbox:checked {
             border-radius: 8px;
-            overflow: hidden;
+            border: none;
         }
 
         @media (max-width: 768px) {
@@ -153,16 +171,35 @@
         <div id="form-section">
             <form action="" id="loginForm">
                 <p id="login">Sign Up</p>
-                <input type="text" name="" id="name" placeholder="Full Name">
-                <input type="email" name="" id="emailId" placeholder="Email ID">
-                <input type="tel" name="" id="phone" placeholder="Phone Number">
-                <input type="password" name="" id="Password" placeholder="Password">
-                 <input type="password" name="" id="ConfirmPassword" placeholder="Confirm Password">
+                <div>
+                    <input type="text" name="" id="name" required>
+                    <label for="name">Full Name</label>
+                </div>
+                <div>
+                    <input type="email" name="" id="emailId" required>
+                    <label for="emailId">Email ID</label>
 
+                </div>
+                <div>
+                    <input type="tel" name="" id="phone" required>
+                    <label for="phone">Phone Number</label>
+
+                </div>
+                <div>
+                    <input type="password" name="" id="Password" required>
+                    <label for="Password">Password</label>
+
+                </div>
+                <div>
+                    <input type="password" name="" id="ConfirmPassword" required>
+                    <label for="ConfirmPassword">Confirm Password</label>
+
+                </div>
                 <div id="checkbox-section">
                     <input type="checkbox" name="" id="checkbox">
-                    <p>I agree to Zomato's <span>Terms of Service</span>, <span>Privacy Policy</span> and <span>Content
-                            Policies</span></p>
+                    <p>I agree to Tasty trill's <a href="">Terms of Service</a>,<a href="">Privacy Policy</a> and <a
+                            href="">Content
+                            Policies</a></p>
                 </div>
                 <button type="submit" id="CreateAccountBtn">Create Account</button>
                 <p id="already">Already have an account? <a href="login.html">Log In</a></p>
@@ -170,23 +207,35 @@
         </div>
     </div>
     <script>
-         let name = document.getElementById("name");
+        let name = document.getElementById("name");
         let Password = document.getElementById("Password");
-        let ConfirmPassword=document.getElementById("ConfirmPassword")
+        let ConfirmPassword = document.getElementById("ConfirmPassword")
         let phone = document.getElementById("phone");
         let emailId = document.getElementById("emailId");
+        let checkbox = document.getElementById("checkbox");
         let CreateAccountBtn = document.getElementById("CreateAccountBtn");
+        checkbox.addEventListener("click", () => {
+            if (checkbox.checked === true) {
+                CreateAccountBtn.style.backgroundColor = "Orangered";
+                CreateAccountBtn.addEventListener("mouseover", () => {
+                    CreateAccountBtn.style.backgroundColor = "brown";
+                })
+            }
+            else {
+                CreateAccountBtn.style.backgroundColor = "grey";
+            }
+        })
         CreateAccountBtn.addEventListener("click", () => {
             localStorage.setItem("Password", Password.value);
             localStorage.setItem("ConfirmPassword", ConfirmPassword.value);
-              localStorage.setItem("phone", phone.value);
+            localStorage.setItem("phone", phone.value);
             localStorage.setItem("emailId", emailId.value);
-              localStorage.setItem("name", name.value);
+            localStorage.setItem("name", name.value);
             location.reload();
             window.addEventListener("load", () => {
                 localStorage.getItem("Password");
-                  localStorage.getItem("ConfirmPassword");
-                    localStorage.getItem("phone");
+                localStorage.getItem("ConfirmPassword");
+                localStorage.getItem("phone");
                 localStorage.getItem("emailId");
                 localStorage.getItem("name")
             })

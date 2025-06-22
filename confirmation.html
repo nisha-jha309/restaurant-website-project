@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="confirmation-container">
+  <h2>🎉 Reservation Confirmed!</h2>
+  <p>Thank you, <strong id="username"></strong>!</p>
+  <p>Your table for <strong>2 guests</strong> is booked on <strong>June 26</strong> at <strong>7:30 PM</strong>.</p>
+  <p>We’ve sent a confirmation to: <strong>anjali@email.com</strong></p>
+
+  <a href="/" class="btn">Back to Home</a>
+  <a href="/menu" class="btn-outline">Explore Menu</a>
+</div>
+<script>
+    let username=localStorage.getItem("username").value;
+    username.textContent
+</script>
+</body>
+</html>
