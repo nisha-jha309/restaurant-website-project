@@ -38,7 +38,7 @@
             align-items: center;
         }
 
-        #loginForm {
+        #signupForm {
             padding: 30px;
             background-color: white;
             width: 400px;
@@ -48,14 +48,22 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        #login {
+        #signup {
             text-align: center;
             margin-bottom: 30px;
             font-size: 26px;
             font-weight: 600;
         }
 
-        #loginForm input {
+        #signupForm h5 {
+            font-size: 14px;
+            color: red;
+            margin-bottom: 20px;
+            font-weight: 300;
+            display: none;
+        }
+
+        #signupForm input {
             width: 100%;
             border: 1px solid rgba(128, 128, 128, 0.600);
             padding: 8px 18px;
@@ -63,32 +71,48 @@
             margin-bottom: 20px;
             font-weight: 400;
             position: relative;
+            text-transform: capitalize;
         }
 
-        #loginForm input:focus {
+        #signupForm input:focus {
             outline: none;
             border: 1px solid black;
 
         }
-         #loginForm div:focus-within label{
+
+        #signupForm div:focus-within label {
             position: absolute;
             top: -10px;
             left: 18px;
             background-color: white;
             font-size: 12px;
-         }
-         #loginForm div{
+        }
+
+        #signupForm div {
             position: relative;
-         }
-        #loginForm label {
+        }
+
+        #signupForm label {
             color: black;
             position: absolute;
-             top: 8px;
+            top: 8px;
             left: 18px;
             background-color: white;
             font-size: 14px;
         }
 
+        #signupForm div>label.active {
+            position: absolute;
+            top: -10px;
+            left: 18px;
+            font-size: 12px;
+            background-color: white;
+        }
+        #diffPass{
+            font-size: 12px;
+            color: red;
+            margin-bottom:10px;
+        }
         #CreateAccountBtn {
             border: none;
             padding: 10px 20px;
@@ -124,10 +148,16 @@
             margin-bottom: 10px;
         }
 
-        #checkbox-section p {
-            font-size: 10px
-        }
+        #checkbox-section-box>p {
+            font-size: 12px;
+            display:block;
+            margin-bottom:10px;
+            color: red;
 
+        }
+          #checkbox-section p{
+            font-size: 10px;
+          }
         #checkbox-section p>a {
             text-decoration: none;
             color: orangered;
@@ -158,7 +188,7 @@
                 height: 90%;
             }
 
-            #loginForm {
+            #signupForm {
                 width: 90%;
             }
         }
@@ -169,78 +199,129 @@
     <div id="full">
         <div id="image-section"><img src="home/restaurant-interior.jpg" alt=""></div>
         <div id="form-section">
-            <form action="" id="loginForm">
-                <p id="login">Sign Up</p>
+            <form action="" id="signupForm" autocomplete="off">
+                <p id="signup">Sign Up</p>
+                <h5 id="errorMsg"></h5>
                 <div>
-                    <input type="text" name="" id="name" required>
+                    <input type="text" name="" id="name">
                     <label for="name">Full Name</label>
                 </div>
                 <div>
-                    <input type="email" name="" id="emailId" required>
+                    <input type="email" name="" id="emailId">
                     <label for="emailId">Email ID</label>
 
                 </div>
                 <div>
-                    <input type="tel" name="" id="phone" required>
+                    <input type="tel" name="" id="phone">
                     <label for="phone">Phone Number</label>
 
                 </div>
                 <div>
-                    <input type="password" name="" id="Password" required>
+                    <input type="password" name="" id="Password">
                     <label for="Password">Password</label>
 
                 </div>
                 <div>
-                    <input type="password" name="" id="ConfirmPassword" required>
+                    <input type="password" name="" id="ConfirmPassword">
                     <label for="ConfirmPassword">Confirm Password</label>
+                    <p id="diffPass"></p>
 
                 </div>
-                <div id="checkbox-section">
+                <div  id="checkbox-section-box">
+                    <div id="checkbox-section">
                     <input type="checkbox" name="" id="checkbox">
                     <p>I agree to Tasty trill's <a href="">Terms of Service</a>,<a href="">Privacy Policy</a> and <a
-                            href="">Content
-                            Policies</a></p>
+                            href="">Content Policies</a></p>
+                            </div>
+                    <p id="agreeCondition"></p>
                 </div>
                 <button type="submit" id="CreateAccountBtn">Create Account</button>
                 <p id="already">Already have an account? <a href="login.html">Log In</a></p>
             </form>
         </div>
     </div>
+
+
     <script>
-        let name = document.getElementById("name");
-        let Password = document.getElementById("Password");
-        let ConfirmPassword = document.getElementById("ConfirmPassword")
-        let phone = document.getElementById("phone");
-        let emailId = document.getElementById("emailId");
+        let errorMsg = document.getElementById("errorMsg");
+        let diffPass = document.getElementById("diffPass");
         let checkbox = document.getElementById("checkbox");
+        let agreeCondition = document.getElementById("agreeCondition");
         let CreateAccountBtn = document.getElementById("CreateAccountBtn");
+        const inputs = document.querySelectorAll("#signupForm input[type='text'], #signupForm input[type='email'], #signupForm input[type='tel'], #signupForm input[type='password']");
+        inputs.forEach(input=>{
+                const label = input.nextElementSibling;
+      input.addEventListener("blur", () => {
+                if (input.value.trim() !== "") {
+                    label.classList.add("active");
+                }
+                 if (input.value.trim() === "") {
+                    label.classList.remove("active");
+                }
+            });
+            }
+    );
+      
         checkbox.addEventListener("click", () => {
-            if (checkbox.checked === true) {
-                CreateAccountBtn.style.backgroundColor = "Orangered";
+            if (checkbox.checked) {
+                CreateAccountBtn.style.backgroundColor = "orangered";
                 CreateAccountBtn.addEventListener("mouseover", () => {
                     CreateAccountBtn.style.backgroundColor = "brown";
-                })
-            }
-            else {
+                });
+                CreateAccountBtn.addEventListener("mouseout", () => {
+                    CreateAccountBtn.style.backgroundColor = "orangered";
+                });
+            } else {
                 CreateAccountBtn.style.backgroundColor = "grey";
             }
-        })
-        CreateAccountBtn.addEventListener("click", () => {
-            localStorage.setItem("Password", Password.value);
-            localStorage.setItem("ConfirmPassword", ConfirmPassword.value);
-            localStorage.setItem("phone", phone.value);
-            localStorage.setItem("emailId", emailId.value);
-            localStorage.setItem("name", name.value);
-            location.reload();
-            window.addEventListener("load", () => {
-                localStorage.getItem("Password");
-                localStorage.getItem("ConfirmPassword");
-                localStorage.getItem("phone");
-                localStorage.getItem("emailId");
-                localStorage.getItem("name")
-            })
-        })
+        });
 
+        let signupForm = document.getElementById("signupForm");
+        signupForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            // Clear previous messages
+            errorMsg.style.display = "none";
+            diffPass.textContent = "";
+            agreeCondition.textContent = "";
+
+            const name = document.getElementById("name").value.trim();
+            const password = document.getElementById("Password").value;
+            const phone = document.getElementById("phone").value.trim();
+            const emailId = document.getElementById("emailId").value.trim();
+            const confirmPassword = document.getElementById("ConfirmPassword").value;
+
+            let isValid = true;
+
+            // Check for empty fields
+            if (!name || !phone || !emailId || !password || !confirmPassword) {
+                errorMsg.style.display = "block";
+                errorMsg.textContent = "All fields are mandatory to fill*";
+                isValid = false;
+            }
+
+            // Check password match
+            if (password !== confirmPassword) {
+                diffPass.textContent = "Please make sure both passwords are the same*";
+                isValid = false;
+            }
+
+            // Check if terms accepted
+            if (!checkbox.checked) {
+                agreeCondition.textContent = "Agree to the terms and conditions first*";
+                isValid =false;
+            }
+            // If all validations pass
+            if (isValid) {
+                // Store data in localStorage
+                localStorage.setItem("name", name);
+                localStorage.setItem("phone", phone);
+                localStorage.setItem("emailId", emailId);
+                localStorage.setItem("password", password);
+
+                window.location.href = "index.html";  
+            }
+        });
     </script>
 </body>
 

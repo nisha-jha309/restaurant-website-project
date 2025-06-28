@@ -1,23 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservation Confirmed</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fff8f0;
+    }
+    .confirmation-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      text-align: center;
+    }
+    .btn, .btn-outline {
+      display: inline-block;
+      margin: 10px 8px;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 8px;
+    }
+    .btn {
+      background-color: orangered;
+      color: white;
+    }
+    .btn-outline {
+      border: 1px solid orangered;
+      color: orangered;
+    }
+  </style>
 </head>
 <body>
-    <div class="confirmation-container">
-  <h2>🎉 Reservation Confirmed!</h2>
-  <p>Thank you, <strong id="username"></strong>!</p>
-  <p>Your table for <strong>2 guests</strong> is booked on <strong>June 26</strong> at <strong>7:30 PM</strong>.</p>
-  <p>We’ve sent a confirmation to: <strong>anjali@email.com</strong></p>
+  <div class="confirmation-container">
+    <h2>Reservation Confirmed!</h2>
+    <p>Thank you, <strong id="username">Guest</strong>!</p>
+    <p>Your table for <strong id="guests">2</strong> guests is booked on 
+      <strong id="date">June 26</strong> at <strong id="time">7:30 PM</strong>.
+    </p>
+    <p>We’ve sent a confirmation to: <strong id="email">your@email.com</strong></p>
 
-  <a href="/" class="btn">Back to Home</a>
-  <a href="/menu" class="btn-outline">Explore Menu</a>
-</div>
-<script>
-    let username=localStorage.getItem("username").value;
-    username.textContent
-</script>
+    <a href="/" class="btn">Back to Home</a>
+    <a href="/menu" class="btn-outline">Explore Menu</a>
+  </div>
+
+  <script>
+    const userName = localStorage.getItem("name");
+    const emailId = localStorage.getItem("emailId");
+    const guests = localStorage.getItem("guests");
+    const date = localStorage.getItem("date");
+    const time = localStorage.getItem("time");
+    if (userName) {
+      document.getElementById("username").textContent = userName;
+    }
+
+    if (emailId) {
+      document.getElementById("email").textContent = emailId;
+    }
+
+    if (guests) {
+      document.getElementById("guests").textContent = guests;
+    }
+
+    if (date) {
+      document.getElementById("date").textContent = date;
+    }
+
+    if (time) {
+      document.getElementById("time").textContent = time;
+    }
+  </script>
 </body>
 </html>

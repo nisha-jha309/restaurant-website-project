@@ -1,140 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login | Tasty Trills</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-           #full{
+
+        #full {
             display: grid;
-            grid-template-columns:50% 50%;
+            grid-template-columns: 50% 50%;
             height: 100vh;
             width: 100vw;
             overflow: hidden;
         }
-        #image-section{            
-            border-radius:0 6px 0 6px;
+
+        #image-section {
+            border-radius: 0 6px 0 6px;
         }
-        #image-section img{
-            width:100%;
+
+        #image-section img {
+            width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius:0 6px 0 6px;
+            border-radius: 0 6px 0 6px;
         }
-        #form-section{
+
+        #form-section {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        #loginForm{
+
+        #loginForm {
             padding: 30px;
             background-color: white;
             width: 400px;
             border-radius: 8px;
-             background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        #login{
+
+        #login {
             text-align: center;
             margin-bottom: 30px;
             font-size: 26px;
             font-weight: 600;
         }
-        #loginForm input{
+
+        #loginForm input {
             width: 100%;
-            border: 1px solid black;
+            border: 1px solid rgba(128, 128, 128, 600);
             padding: 8px 18px;
             border-radius: 8px;
             margin-bottom: 20px;
             font-weight: 400;
         }
-         #loginForm input:focus{
+
+        #loginForm h5 {
+            font-size: 14px;
+            color: red;
+            margin-bottom: 20px;
+            font-weight: 300;
+            display: none;
+        }
+
+        #loginForm input:focus {
             outline: none;
-         }
-         #loginForm input::placeholder{
-            color:grey;
-         }
-        #submitBtn{
+            border: 1px solid black;
+        }
+
+        #loginForm input::placeholder {
+            color: grey;
+        }
+
+        #loginForm div:focus-within label,
+        #loginForm label.active {
+            position: absolute;
+            top: -10px;
+            left: 18px;
+            background-color: white;
+            font-size: 12px;
+        }
+
+        #loginForm div {
+            position: relative;
+        }
+
+        #loginForm label {
+            color: black;
+            position: absolute;
+            top: 8px;
+            left: 18px;
+            background-color: white;
+            font-size: 14px;
+        }
+
+        #submitBtn {
             border: none;
             padding: 10px 20px;
             color: white;
             background-color: orangered;
-            border-radius:8px;
+            border-radius: 8px;
             width: 100%;
             margin-bottom: 20px;
             font-weight: 500;
             transition: background-color 0.2s ease;
         }
-           #submitBtn:hover{
+
+        #submitBtn:hover {
             background-color: brown;
-           }
-     #forgotPassword{
-        text-align: center;
-        color:black;
-        margin-bottom: 10px;
-        font-weight: 300;
-        font-size: 12px;
-     }
-     #new{
-        text-align:center;
-        font-weight: 300;
-        font-size: 14px;
+        }
 
-     }
-     @media (max-width: 768px) {
-  #full {
-       
-            grid-template-rows:50% 50%;
-            grid-template-columns: repeat(1,100%);
-  }
-  #image-section {
-    width: 100%;
-    height:90%;
-  }
-  #loginForm {
-    width: 90%;
-  }
-}
+        #forgotPassword {
+            text-align: center;
+            color: black;
+            margin-bottom: 10px;
+            font-weight: 300;
+            font-size: 12px;
+        }
 
+        #new {
+            text-align: center;
+            font-weight: 300;
+            font-size: 14px;
+
+        }
+
+        @media (max-width: 768px) {
+            #full {
+
+                grid-template-rows: 50% 50%;
+                grid-template-columns: repeat(1, 100%);
+            }
+
+            #image-section {
+                width: 100%;
+                height: 90%;
+            }
+
+            #loginForm {
+                width: 90%;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div id="full">
-    <div id="image-section"><img src="home/restaurant-interior.jpg" alt=""></div>
-    <div id="form-section">
-    <form action="" id="loginForm">
-        <p id="login">LOG IN</p>
-        <input type="email" name="" id="emailId" placeholder="Email ID">
-         <input type="password" name="" id="Password" placeholder="Password">
-        <button type="submit" id="submitBtn">Login</button>
-        <p id="forgotPassword">Forgot Password?</p>
-        <p id="new">New to Tasty Trills? <a href="signup.html">Sign Up</a></p>
-        <!-- I agree to Zomato's Terms of Service, Privacy Policy and Content Policies -->
-    </form>
-    </div>
+        <div id="image-section"><img src="home/restaurant-interior.jpg" alt=""></div>
+        <div id="form-section">
+            <form action="" id="loginForm" autocomplete="off">
+                <p id="login">Log In</p>
+                <h5 id="errorMsg"></h5>
+                <div>
+                    <input type="email" name="" id="emailId">
+                    <label for="emailId">Email ID</label>
+                </div>
+                <div>
+                    <input type="password" name="" id="Password">
+                    <label for="Password">Password</label>
+                </div>
+                <button type="submit" id="submitBtn">Login</button>
+                <p id="forgotPassword">Forgot Password?</p>
+                <p id="new">New to Tasty Trills? <a href="signup.html">Sign Up</a></p>
+            </form>
+        </div>
     </div>
     <script>
-        let Password=document.getElementById("Password");
-         let phone=document.getElementById("phone");
-          let emailId=document.getElementById("emailId");        
-          let submitBtn=document.getElementById("submitBtn");
-          submitBtn.addEventListener("click",()=>{
-            localStorage.setItem("Password",Password.value);
-              localStorage.setItem("emailId",emailId.value);
-              location.reload();
-              window.addEventListener("load",()=>{
-                 localStorage.getItem("Password");
-              localStorage.getItem("emailId");
-              })
-          })
-        
+        let loginForm = document.getElementById("loginForm");
+        let errorMsg = document.getElementById("errorMsg");
+        let submitBtn = document.getElementById("submitBtn");
+        let inputs = document.querySelectorAll("#loginForm input[type='password'],input[type='email']")
+        inputs.forEach(input => {
+            const label = input.nextElementSibling;
+            input.addEventListener("blur", () => {
+                if (input.value.trim() !== "") {
+                    label.classList.add('active');
+                }
+                if (input.value.trim() === "") {
+                    label.classList.remove('active');
+                }
+            })
+        }
+        )
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const Password = document.getElementById("Password").value.trim();
+            const emailId = document.getElementById("emailId").value.trim();
+            let isValid=true;
+            if (!emailId|| !Password) {
+                errorMsg.style.display = "block";
+                errorMsg.textContent = "Agree to the terms and conditions first";
+                isValid=false;
+            }
+            localStorage.setItem("Password", Password);
+            localStorage.setItem("emailId", emailId);
+        })
     </script>
 </body>
+
 </html>
