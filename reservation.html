@@ -6,148 +6,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservations</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .body {
-            background-image: url("home/restaurant.webp");
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .formbox {
-            background-color: rgba(0, 0, 0, 0.603);
-            width: 50%;
-            text-align: center;
-            height: 70vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-        }
-
         #BookingForm {
-            width: 80%;
+            width: 60%;
             margin: 5%;
-            z-index: 3;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.146);
+            padding: 30px;
+            position: relative;
         }
-
+         #BookingForm  h1{
+            text-align: center;
+         }
         input,
-        select {
+        select,textarea {
             padding: 10px 8px;
-            border: 1px solid whitesmoke;
+            border: 1px solid black;
             background-color: transparent;
+            color: black;
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
-
-        input {
-            color: whitesmoke;
+        input:focus,select:focus,textarea:focus{
+            outline: none;
         }
-
-        select {
-            color: whitesmoke;
+        #BookingForm div.inputs input{
+            position: relative;
         }
-
+        textarea{
+            width: 100%;
+        }
        option {
             color: black;
         }
-
-        #restaurant-name {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .date-people,
-        .age-pincode {
-            display: grid;
-            grid-template-columns: 49% 49%;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        #fullName,
-        #email,
-        #phoneNumber {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
         input::placeholder {
-            color: whitesmoke;
+            color: grey;
         }
+        #fullName,#emailId,#phone{
+            width:100%;
+        }
+         #BookingForm .inputs label {
+            position: absolute;
+            top: 10px;
+            left: 8px;
 
+         }
+        #BookingForm div.inputs:focus-within label{
+            position:absolute;
+            top: 0;
+            left:10px;
+        }
+        #time-section{
+            display: grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:20px;
+        }
         #submit-form {
             width: 100%;
             padding: 10px 0;
             color: white;
-            background-color: rgba(255, 68, 0, 0.635);
+            background-color:orangered;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
         }
 
-        #submit-form:focus {
-            background-color: orangered;
+        #submit-form:hover {
+            background-color: brown;
         }
 
-        input:focus,
-        select:focus {
-            border: 1px solid orangered;
-        }
-
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.634);
-            width: 100%;
-            height: 100%;
+        #close{
             position: absolute;
-            z-index: 1;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.593);
+            color:white;
+          display: grid;
+          place-content: center;
+          top: -10px;
+          right:-10px;
         }
+          #close:hover{
+            background-color: grey;
+          }
     </style>
 </head>
 
 <body>
-    <div class="body">
-        <div class="formbox">
             <form action="" method="post" id="BookingForm">
-                <select name="restaurant" id="restaurant-name">
-                    <option value="" selected disabled>Select Restaurant</option>
-                    <option value="Tasty trills,Delhi">Tasty trills,Delhi</option>
-                    <option value="Tasty trills,Bangalore">Tasty trills,Bangalore</option>
-                    <option value="Tasty trills,Chandigarh">Tasty trills,Chandigarh</option>
-                    <option value="Tasty trills,kolkata">Tasty trills,kolkata</option>
-                </select>
-                <div class="date-people">
-                    <input type="date" name="date-of-reservation" id="date-of-reservation">
-                    <input type="number" name="NumberOfPeople" id="" min="1" max="12" placeholder="people"
-                        id="Number-Of-People">
+                <h1>Reserve A Table</h1>
+                 <div id="close">X</div>
+                 <div class="inputs">
+                    <input type="text" name="" id="fullName" placeholder="Full Name">
+                    <label for="">Full Name</label>
                 </div>
-                <input type="text" name="fullName" id="fullName" placeholder="Full Name">
-                <br>
-                <input type="email" name="email" id="email" placeholder="Email ID">
-                <br>
-                <input type="tel" name="phoneNumber" id="phoneNumber" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                    placeholder="+91 Contact NUmber">
-                <br>
-                <div class="age-pincode">
-                    <select name="ageRange" id="ageRange">
-                        <option value="" selected disabled>Select Age Range</option>
-                        <option value="0-12yrs">0-12yrs</option>
-                        <option value="13-18yrs">13-18yrs</option>
-                        <option value="18 above age">18 above age</option>
-                        <option value="50 above age">50 above age</option>
-                    </select>
-                    <input type="text" name="pincode" pattern="[0-9]{6}" maxlength="4" placeholder="Pincode"
-                        id="pincode">
+                <div  class="inputs">
+                    <input type="email" name="" id="emailId" placeholder="abc@gmail.com">
+                    <label for="emailId"><i class="fa-solid fa-paper-plane-top"></i> Email ID</label>
                 </div>
+                <div  class="inputs">
+                    <input type="tel" name="" id="phone">
+                    <label for="phone"><i class="fa-solid fa-address-book"></i> Contact Number</label>
+                </div>
+                <div id="time-section">
+                    <div class="inputs">
+                     <input type="number" name="" id="guests" min="1" value="2" max="12">
+                     <label for="guests" ><i class="fa-solid fa-user-group"></i> people</label>
+                </div>
+                    <input type="date" name="" id="Date">
+               <select name="" id="TimeSlot">
+                <option value="" selected disabled>Select a time slot</option>
+                <option value="">10:00 A.M</option>
+                <option value="">12:00 A.M</option>
+                <option value="">2:00 A.M</option>
+                <option value="">4:00 P.M</option>
+                <option value="">6:00 P.M</option>
+                <option value="">8:00 P.M</option>
+               </select>
+                </div>
+               <textarea name="" id="" cols="30" rows="10" placeholder="We'll try to fulfill your request if it is possible."></textarea>
                 <button id="submit-form">Submit Request</button>
             </form>
-        </div>
-        <div class="overlay"></div>
-    </div>
 </body>
 
 </html>

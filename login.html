@@ -64,14 +64,6 @@
             font-weight: 400;
         }
 
-        #loginForm h5 {
-            font-size: 14px;
-            color: red;
-            margin-bottom: 20px;
-            font-weight: 300;
-            display: none;
-        }
-
         #loginForm input:focus {
             outline: none;
             border: 1px solid black;
@@ -102,7 +94,14 @@
             background-color: white;
             font-size: 14px;
         }
-
+        #loginError,#passError,#emailError{
+            font-size: 12px;
+            color: red;
+            margin-bottom: 10px;
+        }
+          #loginError{
+            font-size: 14px;
+          }
         #submitBtn {
             border: none;
             padding: 10px 20px;
@@ -159,11 +158,13 @@
         <div id="form-section">
             <form action="" id="loginForm" autocomplete="off">
                 <p id="login">Log In</p>
-                <h5 id="errorMsg"></h5>
+                <p id="loginError"></p>
+                <p id="emailError"></p>
                 <div>
                     <input type="email" name="" id="emailId">
                     <label for="emailId">Email ID</label>
                 </div>
+                <p id="passError"></p>
                 <div>
                     <input type="password" name="" id="Password">
                     <label for="Password">Password</label>
@@ -174,11 +175,13 @@
             </form>
         </div>
     </div>
-    <script>
-        let loginForm = document.getElementById("loginForm");
-        let errorMsg = document.getElementById("errorMsg");
-        let submitBtn = document.getElementById("submitBtn");
-        let inputs = document.querySelectorAll("#loginForm input[type='password'],input[type='email']")
+
+<script>
+  const loginForm = document.getElementById("loginForm");
+  const loginError = document.getElementById("loginError");
+  const passError = document.getElementById("passError");
+  const emailError = document.getElementById("emailError");
+     let inputs = document.querySelectorAll("#loginForm input[type='password'],input[type='email']")
         inputs.forEach(input => {
             const label = input.nextElementSibling;
             input.addEventListener("blur", () => {
@@ -191,20 +194,35 @@
             })
         }
         )
-        loginForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const Password = document.getElementById("Password").value.trim();
-            const emailId = document.getElementById("emailId").value.trim();
-            let isValid=true;
-            if (!emailId|| !Password) {
-                errorMsg.style.display = "block";
-                errorMsg.textContent = "Agree to the terms and conditions first";
-                isValid=false;
-            }
-            localStorage.setItem("Password", Password);
-            localStorage.setItem("emailId", emailId);
-        })
-    </script>
+
+  const storedPassword = localStorage.getItem("password");
+  const storedEmail = localStorage.getItem("emailId");
+
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const enteredPassword = document.getElementById("Password").value.trim();
+    const enteredEmail = document.getElementById("emailId").value.trim();
+    loginError.textContent = "";
+    passError.textContent = "";
+    emailError.textContent = "";
+    if (!enteredEmail || !enteredPassword) {
+      loginError.textContent = "Both fields are required*";
+      return;
+    }
+    if (enteredEmail !== storedEmail) {
+      emailError.textContent = "No account found with this email.";
+return;  
+  }
+
+    if (enteredPassword !== storedPassword) {
+      passError.textContent = "Incorrect password. Please try again.";
+return;
+    }
+        window.location.href="index.html";
+  });
+</script>
+
 </body>
 
 </html>
