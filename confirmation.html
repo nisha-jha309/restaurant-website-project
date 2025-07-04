@@ -43,8 +43,8 @@
   <div class="confirmation-container">
     <h2>Reservation Confirmed!</h2>
     <p>Thank you, <strong id="username">Guest</strong>!</p>
-    <p>Your table for <strong id="guests">2</strong> guests is booked on 
-      <strong id="date">June 26</strong> at <strong id="time">7:30 PM</strong>.
+    <p>Your table for <strong id="guests"></strong> guests is booked on 
+      <strong id="date"></strong> at <strong id="time"></strong>.
     </p>
     <p>We’ve sent a confirmation to: <strong id="email">your@email.com</strong></p>
 
@@ -55,9 +55,9 @@
   <script>
     const userName = localStorage.getItem("name");
     const emailId = localStorage.getItem("emailId");
-    const guests = localStorage.getItem("guests");
+    const guestNumber = localStorage.getItem("guestNumber");
     const date = localStorage.getItem("date");
-    const time = localStorage.getItem("time");
+    const timeSlot = localStorage.getItem("timeSlot");
     if (userName) {
       document.getElementById("username").textContent = userName;
     }
@@ -66,16 +66,16 @@
       document.getElementById("email").textContent = emailId;
     }
 
-    if (guests) {
-      document.getElementById("guests").textContent = guests;
+    if (guestNumber) {
+      document.getElementById("guests").textContent = guestNumber;
     }
 
     if (date) {
       document.getElementById("date").textContent = date;
     }
 
-    if (time) {
-      document.getElementById("time").textContent = time;
+    if (timeSlot) {
+      document.getElementById("time").textContent = timeSlot;
     }
   </script>
 </body>
